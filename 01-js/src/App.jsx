@@ -1,302 +1,218 @@
+import { useState } from 'react'
 import './App.css'
 
 function App() {
-
-  function Gildao() {
-
-    let numeroPessoas = Number(prompt("Numeoro de pessoas: "))
-    let carne = numeroPessoas * 0.5
-    let cerveja = numeroPessoas * 1
-    let agua = numeroPessoas * 0.5
-    let refri = numeroPessoas * 0.2
-
-    alert(
-      "Carne: " + carne.toFixed(2) + " Kg" +
-      "\n Cerveja: " + cerveja.toFixed(2) + " l" +
-      "\n Água: " + agua.toFixed(2) + " l" +
-      "\n Refri: " + refri.toFixed(2) + " l"
-    )
-
-
+  const[resultado,setresultado] = useState(0)
+  function calcularPontos(){
+    let vitorias = Number(prompt("Qunatas vitórias teve seu time: "))
+    let empates = Number(prompt("Qunatas vitórias teve seu time: "))
+    let pontos = vitorias*3 + empates*1
+    alert( 'O seu time tem: ' + pontos +' pontos')
   }
 
-  function petShop() {
-
-    let gramas = Number(prompt("Quantidade de gramas: "))
-    let kg = gramas / 1000
-    let preco = kg * 10
-
-    alert("O preço da ração é de: R$ " + preco)
+  function trocarCalcados(){
+    let precoCalcado = Number(prompt('Qual o preço do Calçado: '))
+    let quantidadePares = Number(prompt("Qual aquantidade: "))
+    let valeTrocas = precoCalcado *quantidadePares
+    alert('A empresa vai recber em vales trocas R$ ' + valeTrocas.toFixed(2) + ' reais')
   }
 
-  function romeroBrique() {
-    let valorCompra = Number(prompt("Valor pago pela obra: "))
-    let valorVenda = valorCompra + (valorCompra * 2)
+  function verificarFucionarios(){
+    let clt,estagiarios,pj,qtdFucionarios
+    clt = Number(prompt('Quantos devs clt a empresa possui: ' ))
+    estagiarios= Number(prompt('Quantos devs estagiários a empresa possui: ' ))
+    pj = Number(prompt('Quantos  devs PJ a empresa possui: ' ))
 
-    alert("preço de venda sugerido: R$" + (valorVenda))
+    qtdFucionarios = clt +estagiarios+pj
+    alert('A empresa possui: ' +qtdFucionarios + ' devs')
   }
+
+  function calcularFrete(){
+    let frete, peso, distancia ,volume
+    peso = Number(prompt('Qual o peso: '))
+    distancia = Number(prompt('Qual a distancia: '))
+    volume = Number(prompt('Qual o volume: '))
+    frete =15+(2*peso)+(0.05*distancia)+(10*volume)
+    alert('O  valor do Frete é de R$ ' + frete)
+  }
+
+  function testar (){
+    let nome = prompt('Qual o seu nome: ')
+    let bocaDoSapo = nome
+    alert(nome + ', seu nome está na boca do sapo 🐸 ')
+  }
+
+  function calcularEstoqueLaranjas() {
+    let qtdInicial = Number(prompt("Qual a quantidade inicial de laranjas: "))
+    let qtdFinal = Number(prompt("Qual a quantidade final de laranjas: "))
+    let vendidas = qtdInicial - qtdFinal
+    alert('Foram vendidas ' + vendidas + ' laranjas no dia.')
+  }
+
+
+  function calcularCustosIgreja() {
+    let custoMensal = Number(prompt("Qual o custo mensal da igreja: "))
+    let doacoesDia = Number(prompt("Quanto foi recebido de doações e dízimos hoje: "))
+    let faltaPagar = custoMensal - doacoesDia
+    alert('Falta R$ ' + faltaPagar.toFixed(2) + ' para pagar totalmente os custos mensais.')
+  }
+
+ 
+  function calcularSalarioJunin() {
+    let salarioMensal = Number(prompt("Qual o salário mensal do Junin: "))
+    let diasTrabalhados = Number(prompt("Quantos dias ele trabalha no mês: "))
+    let salarioDiario = salarioMensal / diasTrabalhados
+    let salarioSemanal = salarioDiario * 5 
+
+    alert('Junin recebe R$ ' + salarioDiario.toFixed(2) + ' por dia trabalhado.\n' +
+          'Salário semanal (escala 5x2): R$ ' + salarioSemanal.toFixed(2))
+  }
+
   
-  function manoJuca() {
+  function calcularPesoCarga() {
+    let pesoBrutoTotal = Number(prompt('Qual o peso na balança (Caminhão + Carga): '))
+    let tara = Number(prompt('Qual a tara do caminhão (Peso vazio): '))
+    let pesoCarga = pesoBrutoTotal - tara
 
-    let valorSalario = Number(prompt("Digite o valor do salário: "))
-    let valorAluguel = Number(prompt("Digite o valor do aluguel: "))
-    let valorContaAgua = Number(prompt("Digite o valor da conta de água: "))
-    let valorContaLuz = Number(prompt("Digite o valor da conta de luz: "))
-    let valorinternet = Number(prompt("Digite o valor da conta de internet: "))
-    let valorGasolina = Number(prompt("Digite o valor gasto com gasolina: "))
-    let valorStreamings = Number(prompt("Digite o valor gasto com streamings: "))
-    let valorTelefone = Number(prompt("Digite o valor gasto com telefone: "))
-    let valorOutros = Number(prompt("Digite o valor gasto com outros: "))
+    alert('O peso somente da carga é de: ' + pesoCarga + ' kg')
+  }
+  function calcularChances(){
+    let chance,vezesNoCelular
+    vezesNoCelular = Number(prompt("Quantas vezes o candidato mexeu no celular? "))
+    chance = (0.1/(1+500*vezesNoCelular))*100
+    alert('As chances do candidato são de: ' + chance.toFixed(5))
+  }
+  function calcularLucro(){
+    let totalBruto,premiacoes,presentesAgrados,comissoes,lucro
+    totalBruto = Number(prompt('Qual o total bruto de hoje: '))
+    premiacoes = Number(prompt('Qual as premiacões de hoje: '))
+    presentesAgrados = Number(prompt('Qual o gasto com presentes e agradaos de hoje: '))
+    comissoes= Number(prompt('Qual as comissões de hoje: '))
+    lucro =  totalBruto - (premiacoes + presentesAgrados + comissoes ) 
+    alert('O lucro foi de : ' + lucro)
 
-    let totalGastos =
-      valorAluguel +
-      valorContaAgua +
-      valorContaLuz +
-      valorinternet +
-      valorGasolina +
-      valorStreamings +
-      valorTelefone +
-      valorOutros
 
-    alert("Sobrou: R$ " + (valorSalario - totalGastos))
+  }
+  function calcularDados (){
+    let  suprimentosMercadorias ,vendaIngressos,vendaItens,lucroReal,lucroPercentual
+    suprimentosMercadorias = Number(prompt('Quanto foi gasto com suprimentos e mercadorias: '))
+    vendaIngressos = Number(prompt('Quanto foi arrecadado em venda de ingressos: '))
+    vendaItens =Number(prompt('Quanto foi o faturamento em venda de ítens.'))
+    lucroReal = (vendaIngressos + vendaItens) - suprimentosMercadorias
+    lucroPercentual = (lucroReal / vendaItens) * 100
+   alert('Lucro Real é: ' +lucroReal.toFixed(2))
+   alert('Lucro percentual é: ' + lucroPercentual.toFixed(2) + '%')
+  }
+  function calcularGastos (){
+   let shows,qtdBombas,qtdShows,precoBomba,calculoGastos
+   shows = Number(prompt('Quanto shows a serem feitos: '))
+   qtdBombas = 7;
+   precoBomba = Number(prompt('Qual o preço das bombas de fumaça a serem compradas: '))
+
+   calculoGastos = (precoBomba * qtdBombas * shows)
+   qtdShows = (calculoGastos/ 7)
+  
+   alert('A quantidade de shows na agenda é: ' + qtdShows + 'shows')
+   alert('Total a ser investido no show R$' + calculoGastos.toFixed(2))
+  }
+  function calcularResto(){
+ let salario,moradia,agua,luz,internet,gasolina,streamings,telefone,outros,restoSalario
+ salario = Number(prompt('Qual seu salário:'))
+ moradia = Number(prompt('Quanto gasta com moradia: '))
+ agua = Number(prompt('Quanto gasta com agua: '))
+ luz = Number(prompt('Quanto gasta com luz: '))
+ internet = Number(prompt('Quanto gasta com internet: '))
+ gasolina = Number(prompt('Quanto gasta com gasolina: '))
+ streamings = Number(prompt('Quanto gasta com streamings: '))
+ telefone = Number(prompt('Quanto gasta com telefone: '))
+ outros = Number(prompt('Quanto gasta com outros: '))
+
+  restoSalario =  salario -(moradia + agua +luz +internet +gasolina +streamings + telefone + outros) 
+  alert('Sobrou do salário R$ ' + restoSalario)
+  }
+  function calcularValorObra (){
+    let valordeCompradeObra,precoRevenda
+    valordeCompradeObra = Number(prompt('Por quanto comprou ela: '))
+    precoRevenda = (valordeCompradeObra * 3)
+    alert('O valor de venda deve ser R$ ' + precoRevenda)
+  }
+  function calcularPreco (){
+    let peso,precoPromocao,valorRacao,pesoQuilo
+    peso = Number(prompt('Qual o peso: '))
+    precoPromocao = 10.00;
+    valorRacao = precoPromocao*peso
+    pesoQuilo = valorRacao / 1000;
+    alert('O valor da sua compra de raçao foi de R$ ' + pesoQuilo)
+  }
+  function calcularChurrasco (){
+   const taxaConsumo = {
+    carne: 0.5,
+    cerveja: 1.0,
+    agua: 0.5,
+    refri: 0.2
+  };
+
+  let qtdPessoa = Number(prompt('Qual a quantidade de pessoas: '))
+  let taxaTotalPorPessoa = taxaConsumo.carne + taxaConsumo.cerveja + taxaConsumo.agua + taxaConsumo.refri;
+  let valorDoChurras = (taxaTotalPorPessoa * taxaConsumo)
+  alert('O valor do Churras foi de R$ ' + valorDoChurras)
+  }
+  function calcularDobro(){
+let numero = Number(prompt('Digite um número: '))
+let dobro= numero*2
+setresultado(dobro)
+
+
   }
 
-  function samurano() {
 
-    let qtnShow = Number(prompt("Shows marcados: "))
-    let precoBomba = Number(prompt("Preço da bomba: "))
-    let qtnBomba = qtnShow * 7
-
-    alert(
-      "O total de bombas necessárias é: " + qtnBomba +
-      "\ne o valor total gasto é: R$ " + (qtnBomba * precoBomba)
-    )
-  }
-
-  function capitaoGanso() {
-
-    let gastoSuprimentos = Number(prompt("Digite o valor gasto com suprimentos: "))
-    let faturamentoIngressos = Number(prompt("Digite o faturamento em vendas de ingressos: "))
-    let faturamentoItens = Number(prompt("Digite o faturamento com itens: "))
-
-    let faturamento = faturamentoIngressos + faturamentoItens
-
-    let lucro = faturamento - gastoSuprimentos
-
-    let lucroPercentual = (lucro / faturamento) * 100
-
-    alert("O lucro obtido é de R$ " + lucro.toFixed(2))
-    alert("O lucro percentual é de " + lucroPercentual.toFixed(2) + "%")
-  }
-
-  function calcularLucro() {
-
-    let valorBruto = Number(prompt("Digite o valor bruto:"))
-    let valorPremiacoes = Number(prompt("Digite o valor gasto com premiações: "))
-    let valorPresentes = Number(prompt("Digite o valor gasto com presentes: "))
-    let valorComicoes = Number(prompt("Digite o valor gasto com comissões: "))
-
-    let lucro =
-      valorBruto -
-      valorPremiacoes -
-      valorPresentes -
-      valorComicoes
-
-    alert("O lucro é de R$ " + lucro)
-  }
-
-  function calcularChance() {
-
-    let n = Number(prompt("Digite quantas vezes usou o celular: "))
-    let chance = (0.1 / (1 + 500 * n)) * 100
-
-    alert("A chance do candidato é " + chance + "%")
-  }
-
-  function calcularCarga() {
-
-    let pesoBruto = Number(prompt("Qual o peso bruto do caminhão?"))
-    let tara = Number(prompt("Qual a tara do caminhão?"))
-    let carga = pesoBruto - tara
-
-    alert("O peso da carga é: " + carga + " kg")
-  }
-
-  function calcularIgreja() {
-
-    let custos = Number(prompt("Qual o custo mensal da igreja?"))
-    let recebido = Number(prompt("Quanto foi recebido de doações e dízimos?"))
-    let falta = custos - recebido
-
-    alert("Falta pagar: R$ " + falta)
-  }
-
-  function calcularSalario() {
-
-    let salarioMensal = Number(prompt("Digite o salário mensal:"))
-    let diasTrabalhados = Number(prompt("Digite a quantidade de dias trabalhados:"))
-
-    let salarioDiario = salarioMensal / 30
-    let salarioFinal = salarioDiario * diasTrabalhados
-
-    alert("O salário final é de R$ " + salarioFinal)
-  }
-
-  function calcularVendas() {
-
-    let qtnInicio = Number(prompt("Quantidade inicial de laranjas"))
-    let qtnFinal = Number(prompt("Quantidade final de laranjas"))
-    let qtnVendida = qtnInicio - qtnFinal
-
-    alert("A quantidade de laranjas vendidas foi: " + qtnVendida)
-  }
-
-  function calcularFrete() {
-
-    let peso = Number(prompt("Digite o peso:"))
-    let distancia = Number(prompt("Digite a distância:"))
-    let volume = Number(prompt("Digite o volume:"))
-
-    let frete =
-      15 +
-      (2 * peso) +
-      (0.05 * distancia) +
-      (10 * volume)
-
-    alert("O valor do frete é de R$ " + frete)
-  }
-
-  function calcularDevs() {
-
-    let clt = Number(prompt("Quantos devs CLT?"))
-    let estagiarios = Number(prompt("Quantos devs estagiários?"))
-    let pj = Number(prompt("Quantos devs PJ?"))
-
-    let total = clt + estagiarios + pj
-
-    alert("A empresa tem " + total + " devs no total.")
-  }
-
-  function calcularPontos() {
-
-    let vitorias = Number(prompt("Quantas vitórias teve seu time: "))
-    let empates = Number(prompt("Quantos empates teve seu time: "))
-
-    let pontos = vitorias * 3 + empates
-
-    alert("O seu time tem: " + pontos + " pontos")
-  }
-
-  function trocarCalcados() {
-
-    let precoCalcado = Number(prompt("Qual o preço do Calçado: "))
-    let quantidadePares = Number(prompt("Qual a quantidade: "))
-
-    let valeTrocas = precoCalcado * quantidadePares
-
-    alert("A empresa vai receber em vales trocas: " + valeTrocas + " reais")
-  }
-
-  function testar() {
-
-    let nome = prompt("Qual o seu nome: ")
-
-    alert(nome + ", seu nome está na boca do sapo 🐸")
-  }
-
-  function calcularMedia() {
-
-    let nota1 = Number(prompt("Qual o valor da primeira nota:"))
-    let nota2 = Number(prompt("Qual o valor da segunda nota:"))
-
-    let media = (nota1 + nota2) / 2
-
-    alert("Sua média final: " + media)
-  }
 
   return (
     <div className="cont-app">
-
       <h1>JavaScript no React</h1>
+      <hr/>
+      
+      <h2>Usando estados</h2>
+      <button onClick={calcularDobro}>Estados - dobro</button>
+   <p>Resultado do dobro: {resultado}</p>
+    
+      <hr/>
+      <h2>Exercicios Sumpipas</h2>
 
-      <h2>Exercícios Surpresa</h2>
+      <button onClick={calcularPontos}>Campeonato</button>
+      <button onClick={trocarCalcados}>Trocas Pé Pequeno</button>
+      <button onClick={verificarFucionarios}>Verificador de Fucionarios</button>
+      <button onClick={calcularFrete}>Calcular Frete</button>
+      <button onClick={testar}>Testar</button>
+      <button onClick={calcularMedia}>Média</button>
+      <button onClick={calcularDados}>Calcular Faturamneto</button>
+      <button onClick={calcularValorObra}>Valor da Obra</button>
+      <button onClick={calcularChurrasco}>Valor do Churrasco</button>
 
-      <button onClick={calcularDevs}>
-        Força de trabalho
-      </button>
-
-      <button onClick={calcularPontos}>
-        Campeonato
-      </button>
-
-      <button onClick={trocarCalcados}>
-        Trocas Pé Pequeno
-      </button>
+  
 
       <hr />
+      <button onClick={calcularEstoqueLaranjas}>Estoque Laranjas</button>
+      <button onClick={calcularCustosIgreja}>Custos Igreja </button>
+      <button onClick={calcularSalarioJunin}>Salário Junin </button>
+      <button onClick={calcularPesoCarga}>Peso Veículos </button>
+      <button onClick={calcularChances}>Calcular Chances </button>
+      <button onClick={calcularLucro}>Lucro </button>
+      <button onClick={calcularGastos}>Quatidades </button>
+      <button onClick={calcularResto}>Resto do Salário</button>
+      <button onClick={calcularPreco}>Preço da Ração</button>
 
-      <button onClick={testar}>
-        Testar
-      </button>
-
-      <button onClick={calcularMedia}>
-        Média
-      </button>
-
-      <button onClick={calcularFrete}>
-        Frete
-      </button>
-
-      <button onClick={calcularVendas}>
-        Vendas
-      </button>
-
-      <button onClick={calcularIgreja}>
-        Igreja
-      </button>
-
-      <button onClick={calcularSalario}>
-        Salário
-      </button>
-
-      <button onClick={calcularCarga}>
-        Carga
-      </button>
-
-      <button onClick={calcularChance}>
-        Chance
-      </button>
-
-      <button onClick={calcularLucro}>
-        Calcular Lucro
-      </button>
-
-      <button onClick={capitaoGanso}>
-        Lucro mensal
-      </button>
-
-      <button onClick={samurano}>
-        Bomba
-      </button>
-
-      <button onClick={manoJuca}>
-        Mano Juca
-      </button>
-
-      <button onClick={romeroBrique}>
-        Venda Quadro
-      </button>
-
-      <button onClick={petShop}>
-        Valor ração
-      </button>
-
-      <button onClick={Gildao}>
-        Calculadora churrasco
-      </button>
+      
 
     </div>
   )
+}
+
+function calcularMedia (){
+  let nota1 = Number((prompt("Qual o valor da primeira nota:")))
+  let nota2 = Number((prompt("Qual o valor da segunda nota:")))
+  let media = (nota1 + nota2) /2;
+  alert('Sua média final: ' + media)
 }
 
 export default App
